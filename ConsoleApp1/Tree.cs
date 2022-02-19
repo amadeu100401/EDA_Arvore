@@ -10,7 +10,7 @@ namespace BT
     {
         public Node NodeRoot { get; set; }  
 
-        public bool AddNodeTree(int value, int id)
+        public bool AddNodeTree(int value)
         {
             Node parent = null, current = this.NodeRoot;
 
@@ -20,12 +20,10 @@ namespace BT
                 if ( value < current.Value )
                 {
                     current = current.LeftNode; //Se o novo novo tiver valor menor, fiaca na esquerda
-                    current.Id = id;
                     
                 }
                 else if ( value > current.Value ) {
                     current = current.RightNode; // Nodo com valor maior, fica na direita 
-                    current.Id = id;
                 }
                 else
                 {
@@ -38,7 +36,6 @@ namespace BT
 
             Node NNode = new Node(); //instanciândo um novo nodo 
             NNode.Value = value;
-            NNode.Id = id;
 
                 if (this.NodeRoot == null)
                 {
