@@ -11,9 +11,9 @@ namespace BT
         public static void Main()
         {
             Tree tree = new Tree();
-            tree.AddNodeTree(10);
-            tree.AddNodeTree(20);
-            tree.AddNodeTree(30);
+            tree.AddNodeTree(10, 01);
+            tree.AddNodeTree(20, 02);
+            tree.AddNodeTree(30, 03);
         }
     }
 }
