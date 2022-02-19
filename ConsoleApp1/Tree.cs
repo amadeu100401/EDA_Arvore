@@ -10,19 +10,22 @@ namespace BT
     {
         public Node NodeRoot { get; set; }  
 
-        public bool AddNodeTree(int value)
+        public bool AddNodeTree(int value, int id)
         {
-            Node bfr = null, aft = this.NodeRoot;
+            Node parent = null, current = this.NodeRoot;
 
-            while (aft != null)
+            while (current != null)
             {
-                if ( value < aft.Value )
+                parent = current; 
+                if ( value < current.Value )
                 {
-                    aft = aft.LeftNode; //Se o novo novo tiver valor menor, fiaca na esquerda
+                    current = current.LeftNode; //Se o novo novo tiver valor menor, fiaca na esquerda
+                    current.Id = id;
                     
                 }
-                else if ( value > aft.Value ) {
-                    aft = aft.RightNode; // Nodo com valor maior, fica na direita 
+                else if ( value > current.Value ) {
+                    current = current.RightNode; // Nodo com valor maior, fica na direita 
+                    current.Id = id;
                 }
                 else
                 {
@@ -33,8 +36,9 @@ namespace BT
 
             }
 
-            Node NNode = new Node(); //instanciândo um novo Nodo 
+            Node NNode = new Node(); //instanciândo um novo nodo 
             NNode.Value = value;
+            NNode.Id = id;
 
                 if (this.NodeRoot == null)
                 {
@@ -43,13 +47,13 @@ namespace BT
                 }
                 else
                 {
-                    if (value < bfr.Value) //Caso valor do novo nodo seja menor, nodo lado esquerdo
+                    if (value < parent.Value) //Caso valor do novo nodo seja menor, nodo lado esquerdo
                     {
-                        bfr = bfr.LeftNode;
+                        parent = parent.LeftNode;
                     }
                     else //caso nodo maior, nodo lado direito
                     {
-                        bfr = bfr.RightNode;
+                        parent = parent.RightNode;
                     }
 
                 }
