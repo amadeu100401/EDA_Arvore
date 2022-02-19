@@ -55,5 +55,11 @@ namespace BT
                 }
             return true;
         }
+
+        public Node ReturnRoot()
+        {
+            Console.WriteLine(NodeRoot.Value);
+            return this.NodeRoot;
+        }
     }
 }
