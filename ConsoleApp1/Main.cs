@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BT.Tree;
 
 namespace BT
 {
@@ -10,10 +11,15 @@ namespace BT
     {
         public static void Main()
         {
-            Tree tree = new Tree();
-            tree.AddNodeTree(10);
-            tree.AddNodeTree(20);
-            tree.AddNodeTree(30);
+            Node root = null;
+            root = InsertNode(root, 50);
+            InsertNode(root, 40);
+            InsertNode(root, 20);
+            InsertNode(root, 30);
+            InsertNode(root, 80);
+
+            Console.WriteLine(root.RightNode);
+
         }
     }
 }
