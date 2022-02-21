@@ -8,59 +8,57 @@ namespace BT
 {
     class Tree
     {
-        public Node NodeRoot { get; set; }  
-
-        public bool AddNodeTree(int value)
+        public class Node
         {
-            Node parent = null, current = this.NodeRoot;
+            public int Value { get; set; }
+            public Node? LeftNode { get; set; }
+            public Node? RightNode { get; set; }
+        };
 
-            while (current != null)
-            {
-                parent = current; 
-                if ( value < current.Value )
-                {
-                    current = current.LeftNode; //Se o novo novo tiver valor menor, fiaca na esquerda
-                    
-                }
-                else if ( value > current.Value ) {
-                    current = current.RightNode; // Nodo com valor maior, fica na direita 
-                }
-                else
-                {
-                    //Caso exista valor igual
-                    Console.WriteLine("Já existe um nodo com este valor");
-                    return false;
-                }
+        static Node newNode(int value)
+        {
+            Node tn = new Node();
+            tn.Value = value;
+            tn.LeftNode = null;
+            tn.RightNode = null;
 
-            }
-
-            Node NNode = new Node(); //instanciândo um novo nodo 
-            NNode.Value = value;
-
-                if (this.NodeRoot == null)
-                {
-                    this.NodeRoot = NNode; //Se nodo root estiver vazio, recebe o novo nodo instanciado
-                    Console.WriteLine("Raiz criada");
-                }
-                else
-                {
-                    if (value < parent.Value) //Caso valor do novo nodo seja menor, nodo lado esquerdo
-                    {
-                        parent = parent.LeftNode;
-                    }
-                    else //caso nodo maior, nodo lado direito
-                    {
-                        parent = parent.RightNode;
-                    }
-
-                }
-            return true;
+            return tn;
         }
 
-        public Node ReturnRoot()
+        public static Node InsertNode (Node root,int value)
         {
-            Console.WriteLine(NodeRoot.Value);
-            return this.NodeRoot;
+            Node newnode = newNode(value);
+            Node rn = root;
+
+            Node aux = null;
+            
+            while (rn != null)
+            {
+                rn = aux;
+                if (value < rn.Value)
+                {
+                    rn = rn.LeftNode;
+                }
+                else
+                    rn = rn.RightNode;
+            }
+
+            if (aux != null)
+            {
+                aux = newnode;
+                Console.WriteLine("Raiz criada");
+            }
+            else if (value < aux.Value)
+            {
+                aux.LeftNode = newnode;
+            }
+            else
+            {
+                aux.RightNode = newnode;
+            }
+
+            return aux;
+
         }
     }
 }
