@@ -32,6 +32,17 @@ namespace BT
 
             Node aux = null;
 
+            while (rn != null)
+            {
+                rn = aux;
+                if (value < rn.Value)
+                {
+                    rn = rn.LeftNode;
+                }
+                else
+                    rn = rn.RightNode;
+            }
+
             if (aux != null)
             {
                 aux = newnode;
@@ -44,17 +55,6 @@ namespace BT
             else
             {
                 aux.RightNode = newnode;
-            }
-
-            while (rn != null)
-            {
-                rn = aux;
-                if (value < rn.Value)
-                {
-                    rn = rn.LeftNode;
-                }
-                else
-                    rn = rn.RightNode;
             }
 
             return aux;
