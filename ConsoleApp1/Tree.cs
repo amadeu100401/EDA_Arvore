@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static BT.Tree;
 
 namespace BT
 {
@@ -13,7 +14,7 @@ namespace BT
             public int Value { get; set; }
             public Node? LeftNode { get; set; }
             public Node? RightNode { get; set; }
-        };
+        }
 
         static Node newNode(int value)
         {
@@ -27,38 +28,45 @@ namespace BT
 
         public static Node InsertNode (Node root,int value)
         {
-            Node newnode = newNode(value);
-            Node rn = root;
-
-            Node aux = null;
-
-            while (rn != null)
+            if (root == null)
             {
-                rn = aux;
-                if (value < rn.Value)
-                {
-                    rn = rn.LeftNode;
-                }
-                else
-                    rn = rn.RightNode;
-            }
-
-            if (aux != null)
-            {
-                aux = newnode;
+                root = newNode(value);
                 Console.WriteLine("Raiz criada");
             }
-            else if (value < aux.Value)
+            else if (value < root.Value)
             {
-                aux.LeftNode = newnode;
+                if (root.LeftNode == null)
+                {
+                    root.LeftNode = newNode(value);
+                }
+
+                else
+                {
+                    InsertNode(root,value);
+                }
             }
-            else
+            else if (value > root.Value)
             {
-                aux.RightNode = newnode;
+                if (root.RightNode == null) 
+                {
+                    root.RightNode = newNode(value);
+                }
+
+                else
+                {
+                    InsertNode(root, value);
+                }
             }
 
-            return aux;
-
+            return root;
         }
+
+        public static void Main(String[] args)
+        {
+            Node root = null;
+            root = InsertNode(root,10);
+            InsertNode(root,20);
+        }
+
     }
 }
