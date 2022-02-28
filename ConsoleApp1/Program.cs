@@ -2,7 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BT
+namespace ArvoreBinariaGenetica
 {
     public class Program
     {
