@@ -22,6 +22,7 @@ namespace ArvoreBinariaGenetica
             if (root == null)
             {
                 root = newNode(value);
+                root.Height = 0;
             }
             else
             {
@@ -29,6 +30,7 @@ namespace ArvoreBinariaGenetica
                 {
                     root.LeftNode = newNode(value);
                     root.LeftNode.Father = root;
+                    root.LeftNode.Height = root.Height + 1;
                     root.Grade += 1;
                 }
                 else if (root.RightNode == null)
@@ -49,11 +51,10 @@ namespace ArvoreBinariaGenetica
         {
             if (node.LeftNode is null && node.RightNode is null)
             {
-                Console.WriteLine("Esse nodo não é um folha.");
-                return false;
+                Console.WriteLine("Passou por aqui");
+                return true;
             }
-            Console.WriteLine("Esse nodo é uma folha.");
-            return true;
+            return false;
         }
     }
 }
