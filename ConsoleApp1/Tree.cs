@@ -56,5 +56,17 @@ namespace ArvoreBinariaGenetica
             }
             return false;
         }
+
+        public int NodeDepth(Node node)
+        {
+            var depth = 0;
+            if (node.Father is not null)
+            {
+                NodeDepth(node.Father);
+                depth += 1;
+                return depth;
+            }
+            return depth;
+        }
     }
 }
