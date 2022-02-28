@@ -14,6 +14,7 @@ namespace ArvoreBinariaGenetica
             node.Value = value;
             node.LeftNode = null;
             node.RightNode = null;
+            node.Level = 0;
             return node;
         }
 
@@ -22,7 +23,6 @@ namespace ArvoreBinariaGenetica
             if (root == null)
             {
                 root = newNode(value);
-                root.Height = 0;
             }
             else
             {
@@ -30,7 +30,7 @@ namespace ArvoreBinariaGenetica
                 {
                     root.LeftNode = newNode(value);
                     root.LeftNode.Father = root;
-                    root.LeftNode.Height = root.Height + 1;
+                    root.LeftNode.Level = root.Level + 1;
                     root.Grade += 1;
                 }
                 else if (root.RightNode == null)
@@ -51,10 +51,33 @@ namespace ArvoreBinariaGenetica
         {
             if (node.LeftNode is null && node.RightNode is null)
             {
-                Console.WriteLine("Passou por aqui");
                 return true;
             }
             return false;
+        }
+
+        public int NodeHeight(Node node)
+        {
+            var height = 0;
+
+            if (LeafNode(node) == false)
+            {
+                if (node.LeftNode == null || node.LeftNode != null && node.RightNode != null)
+                {
+                    NodeHeight(node.RightNode);
+                    height += 1;
+                }
+                else if (node.RightNode == null)
+                {
+                    NodeHeight(node.LeftNode);
+                    height += 1;
+                }
+            }
+            else if( height != 0)
+            {
+                height += 1;
+            }
+            return height;
         }
 
         public int NodeDepth(Node node)

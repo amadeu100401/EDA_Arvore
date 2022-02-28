@@ -13,6 +13,6 @@ namespace ArvoreBinariaGenetica
         public Node? RightNode { get; set; }
         public Node? Father { get; set; }
         public int Grade { get; set; }
-        public int Height { get; set; }
+        public int Level { get; set; }
     }
 }
