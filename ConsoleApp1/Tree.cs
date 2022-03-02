@@ -56,28 +56,24 @@ namespace ArvoreBinariaGenetica
             return false;
         }
 
-        public int NodeHeight(Node node)
+        public int NodeHeight(Node root,int value)
         {
-            var height = 0;
+            if (root is null)
+            {
+                return -1;
+            }
 
-            if (LeafNode(node) == false)
+            int LeftHeight = NodeHeight(root.LeftNode, value);
+            int RightHeight = NodeHeight(root.RightNode,value);
+            int aux = Math.Max(LeftHeight, RightHeight) + 1;
+
+            if (root.Value == value)
             {
-                if (node.LeftNode == null || node.LeftNode != null && node.RightNode != null)
-                {
-                    NodeHeight(node.RightNode);
-                    height += 1;
-                }
-                else if (node.RightNode == null)
-                {
-                    NodeHeight(node.LeftNode);
-                    height += 1;
-                }
+                int Height = aux;
+                return Height;
             }
-            else if( height != 0)
-            {
-                height += 1;
-            }
-            return height;
+
+            return aux;
         }
 
         public int NodeDepth(Node node)
