@@ -87,5 +87,19 @@ namespace ArvoreBinariaGenetica
             }
             return depth;
         }
+
+        public bool VerificarSubarvore(Node node1, Node node2)
+        {
+            if (node2 == null)
+                return true;
+
+            if (node1 == null)
+                return false;
+
+            if (node1.Value == node2.Value)
+                return true;
+
+            return VerificarSubarvore(node1.LeftNode, node2) || VerificarSubarvore(node1.RightNode, node2);
+        }
     }
 }
