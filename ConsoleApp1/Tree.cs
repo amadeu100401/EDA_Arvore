@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ArvoreBinariaGenetica
 {
@@ -88,18 +89,22 @@ namespace ArvoreBinariaGenetica
             return depth;
         }
 
-        public bool VerificarSubarvore(Node node1, Node node2)
+        public bool Subarvore(Node node, int valorNode)
         {
-            if (node2 == null)
-                return true;
 
-            if (node1 == null)
+            if (node == null)
                 return false;
 
-            if (node1.Value == node2.Value)
+            if (node.Value == valorNode)
                 return true;
 
-            return VerificarSubarvore(node1.LeftNode, node2) || VerificarSubarvore(node1.RightNode, node2);
+            if (Subarvore(node.LeftNode, valorNode) || Subarvore(node.RightNode, valorNode))
+            {
+                Console.WriteLine("Esse ná faz parte da Subárvore " + node.Value + " ");
+                return true;
+            }
+
+            return false;
         }
     }
 }

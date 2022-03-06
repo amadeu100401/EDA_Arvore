@@ -15,8 +15,8 @@ namespace ArvoreBinariaGenetica
             tree.InsertNode(root, 30);
             tree.InsertNode(root, 40);
             //tree.LeafNode(root.LeftNode.LeftNode);
+            tree.Subarvore(root, 30);
             Console.WriteLine(tree.NodeHeight(root,10));
-            
             
             Console.WriteLine(root.LeftNode.LeftNode.Value);
         }
