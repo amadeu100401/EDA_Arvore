@@ -9,6 +9,37 @@ namespace ArvoreBinariaGenetica
 {
     class Tree
     {
+        public void ShowTree (Node node)
+        {
+            if (node == null)
+            {
+                return;
+            }
+
+            if (node.Root)
+            {
+                Console.WriteLine($"Nodo raiz da árvore: {node.Value}");
+                ShowTree(node.LeftNode);
+                ShowTree(node.RightNode);
+            }
+            else
+            {
+                Console.Write($"Nodo caule: {node.Value} ");
+                Console.Write($"Nodo pai: {node.Father.Value} ");
+                if (node.Father.LeftNode.Value == node.Value)
+                {
+                    Console.Write("Posição: Filho esquerdo " );
+                }
+                else
+                {
+                    Console.Write("Posição: Filho direito " );
+                }
+                Console.WriteLine($"Nível do nodo: {node.Level} ");
+                ShowTree(node.LeftNode);
+                ShowTree(node.RightNode);
+            }
+        }
+
         public bool LeafNode(Node node)
         {
             if (node.LeftNode is null && node.RightNode is null)
@@ -16,6 +47,12 @@ namespace ArvoreBinariaGenetica
                 return true;
             }
             return false;
+        }
+
+        public int NodeLevel(Node node)
+        {
+            if (node == null) Console.WriteLine("Nodo inexistente.");
+            return node.Level;
         }
 
         public int NodeHeight(Node root,int value)
@@ -48,6 +85,21 @@ namespace ArvoreBinariaGenetica
                 return depth;
             }
             return depth;
+        }
+
+        public int NodeGrade(Node node)
+        {
+            if (node == null) return -1;
+
+            if (node.LeftNode == null || node.RightNode == null)
+            {
+                node.Grade = 1;
+            }
+            else if (node.LeftNode != null && node.RightNode != null)
+            {
+                node.Grade = 2;
+            }
+            return node.Grade;
         }
 
         public void SubTree(Node node)

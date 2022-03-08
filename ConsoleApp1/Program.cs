@@ -27,17 +27,33 @@ namespace ArvoreBinariaGenetica
             node3.InsertNode(node3,node6);
             node4.InsertNode(node4,node7);
 
+            Console.WriteLine("----------------------------------Árvore----------------------------------");
+            Console.WriteLine("Retorna a árvore");
+            tree.ShowTree(root);
+            Console.WriteLine("----------------------------------------------------------------------------");
+            Console.WriteLine("Verifica se o nodo é um nodo folha");
+            if (tree.LeafNode(root.LeftNode.LeftNode))
+            {
+                Console.WriteLine("folha");
+            }
+            else Console.WriteLine("Não é um nodo folha");
+            Console.WriteLine("----------------------------------------------------------------------------");
+            Console.WriteLine("Retorna a altura do nodo");
+            Console.WriteLine($"A altura do nodo é: {tree.NodeHeight(root,40)}");
+            Console.WriteLine("----------------------------------------------------------------------------");
+            Console.WriteLine("Retorna a profundidade do nodo");
+            Console.WriteLine($"A profundidade do nodo é: {tree.NodeDepth(node3)}");
+            Console.WriteLine("----------------------------------------------------------------------------");
+            Console.WriteLine("Retorna o grau do nodo");
+            Console.WriteLine($"O grau do nodo é: {tree.NodeGrade(node3)}");
+            Console.WriteLine("----------------------------------------------------------------------------");
+            Console.WriteLine("Retorna o nível do nodo");
+            Console.WriteLine($"O nível do nodo é: {tree.NodeLevel(node3)}");
+            Console.WriteLine("----------------------------------------------------------------------------");
+            Console.WriteLine("Retorna a subarvore do nodo");
+            tree.SubTree(node2);
+            Console.WriteLine("----------------------------------------------------------------------------");
 
-            //if (tree.LeafNode(root.LeftNode.LeftNode.LeftNode))
-            //{
-            //    Console.WriteLine("folha");
-            //};
-            //tree.SubTree(root.LeftNode);
-            //Console.WriteLine(tree.NodeHeight(root,10));
-
-            Console.WriteLine(tree.NodeDepth(root.LeftNode));
-
-            Console.WriteLine(root.LeftNode.Father.Value);
         }
     }
 

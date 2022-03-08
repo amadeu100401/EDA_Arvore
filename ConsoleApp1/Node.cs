@@ -22,19 +22,20 @@ namespace ArvoreBinariaGenetica
             Root = root;
         }
 
-        public void InsertNode(Node Dad,Node node)
+        public void InsertNode(Node father,Node node)
         {
 
             if (LeftNode == null)
             {
                 LeftNode = node;
-                LeftNode.Level = node.Level + 1;
-                LeftNode.Father = Dad;
+                LeftNode.Level = father.Level + 1;
+                LeftNode.Father = father;
             }
             else
             {
                 RightNode = node;
-                RightNode.Level = node.Level + 1;
+                RightNode.Level = father.Level + 1;
+                RightNode.Father = father;
             }
 
         }
