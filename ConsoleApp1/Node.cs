@@ -28,14 +28,14 @@ namespace ArvoreBinariaGenetica
             if (LeftNode == null)
             {
                 LeftNode = node;
-                LeftNode.Level = father.Level + 1;
                 LeftNode.Father = father;
+                LeftNode.Level = father.Level + 1;
             }
             else
             {
                 RightNode = node;
-                RightNode.Level = father.Level + 1;
                 RightNode.Father = father;
+                RightNode.Level = father.Level + 1;   
             }
 
         }
