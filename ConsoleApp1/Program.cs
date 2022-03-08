@@ -19,13 +19,13 @@ namespace ArvoreBinariaGenetica
             var node6 = new Node(70, false);
             var node7 = new Node(80, false);
 
-            root.InsertNode(root,node1);
-            root.InsertNode(root,node2);
-            node1.InsertNode(node1,node3);
-            node1.InsertNode(node1,node4);
-            node2.InsertNode(node2,node5);
-            node3.InsertNode(node3,node6);
-            node4.InsertNode(node4,node7);
+            root.InsertSon(root,node1);
+            root.InsertSon(root,node2);
+            node1.InsertSon(node1,node3);
+            node1.InsertSon(node1,node4);
+            node2.InsertSon(node2,node5);
+            node3.InsertSon(node3,node6);
+            node4.InsertSon(node4,node7);
 
             Console.WriteLine("----------------------------------Árvore----------------------------------");
             Console.WriteLine("Retorna a árvore");

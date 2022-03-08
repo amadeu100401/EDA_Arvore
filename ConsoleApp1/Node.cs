@@ -22,7 +22,7 @@ namespace ArvoreBinariaGenetica
             Root = root;
         }
 
-        public void InsertNode(Node father,Node node)
+        public void InsertSon(Node father,Node node)
         {
 
             if (LeftNode == null)
